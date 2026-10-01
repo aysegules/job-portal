@@ -28,8 +28,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.get("/", (req: Request, res: Response) => {
-  console.log("Server is running...");
+app.get("/", (_req: Request, res: Response) => {
+  res.status(200).json({ message: "Server is running..." });
 });
 
 export default app;
