@@ -1,14 +1,22 @@
-import cloudinary from "../config/cloudinary";
+import cloudinary from "../config/cloudinary.js";
 
-export const uploadImage = (
+export type CloudinaryResourceType = "image" | "raw";
+
+export interface CloudinaryUploadResult {
+  url: string;
+  publicId: string;
+}
+
+export const uploadToCloudinary = (
   buffer: Buffer,
-  folder: string = "users",
-): Promise<string> => {
+  folder: string,
+  resourceType: CloudinaryResourceType
+): Promise<CloudinaryUploadResult> => {
   return new Promise((resolve, reject) => {
-    const stream = cloudinary.uploader.upload_stream(
+    const uploadStream = cloudinary.uploader.upload_stream(
       {
         folder,
-        resource_type: "image",
+        resource_type: resourceType,
       },
       (error, result) => {
         if (error) {
@@ -21,10 +29,22 @@ export const uploadImage = (
           return;
         }
 
-        resolve(result.secure_url);
-      },
+        resolve({
+          url: result.secure_url,
+          publicId: result.public_id,
+        });
+      }
     );
 
-    stream.end(buffer);
+    uploadStream.end(buffer);
+  });
+};
+
+export const deleteFromCloudinary = async (
+  publicId: string,
+  resourceType: CloudinaryResourceType
+) => {
+  await cloudinary.uploader.destroy(publicId, {
+    resource_type: resourceType,
   });
 };
