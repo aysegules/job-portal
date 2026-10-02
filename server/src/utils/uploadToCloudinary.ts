@@ -1,4 +1,4 @@
-import cloudinary from "../config/cloudinary.js";
+import cloudinary from "../config/cloudinary.ts";
 
 export type CloudinaryResourceType = "image" | "raw";
 
@@ -10,7 +10,7 @@ export interface CloudinaryUploadResult {
 export const uploadToCloudinary = (
   buffer: Buffer,
   folder: string,
-  resourceType: CloudinaryResourceType
+  resourceType: CloudinaryResourceType,
 ): Promise<CloudinaryUploadResult> => {
   return new Promise((resolve, reject) => {
     const uploadStream = cloudinary.uploader.upload_stream(
@@ -33,7 +33,7 @@ export const uploadToCloudinary = (
           url: result.secure_url,
           publicId: result.public_id,
         });
-      }
+      },
     );
 
     uploadStream.end(buffer);
@@ -42,7 +42,7 @@ export const uploadToCloudinary = (
 
 export const deleteFromCloudinary = async (
   publicId: string,
-  resourceType: CloudinaryResourceType
+  resourceType: CloudinaryResourceType,
 ) => {
   await cloudinary.uploader.destroy(publicId, {
     resource_type: resourceType,

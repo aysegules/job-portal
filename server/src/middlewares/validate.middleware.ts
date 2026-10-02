@@ -1,5 +1,5 @@
 import type { NextFunction, Request, Response } from "express";
-import { ValidationError } from "../errors/ValidationError";
+import { ValidationError } from "../errors/ValidationError.ts";
 import type { ZodType } from "zod";
 
 export const validate = (schema: ZodType<any, any, any>) => {

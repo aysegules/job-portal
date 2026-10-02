@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { upload } from "../middlewares/multer.middleware";
-import { validate } from "../middlewares/validate.middleware";
-import { loginSchema, registerSchema } from "../validators/auth.validator";
-import { login, register } from "../controllers/auth.controller";
+import { upload } from "../middlewares/multer.middleware.ts";
+import { validate } from "../middlewares/validate.middleware.ts";
+import { loginSchema, registerSchema } from "../validators/auth.validator.ts";
+import { login, register } from "../controllers/auth.controller.ts";
 
 const router = Router();
 

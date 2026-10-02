@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
-import { asyncHandler } from "../utils/asyncHandler";
-import * as authService from "../services/auth.service";
-import type { UserFiles } from "../types/auth.types";
+import { asyncHandler } from "../utils/asyncHandler.ts";
+import * as authService from "../services/auth.service.ts";
+import type { UserFiles } from "../types/auth.types.ts";
 
 const register = asyncHandler(async (req: Request, res: Response) => {
   const files = req.files as UserFiles;

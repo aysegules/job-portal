@@ -79,3 +79,5 @@ typings/
 
 # prisma
 server/generated/prisma
+.vercel
+.env*

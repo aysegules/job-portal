@@ -1,14 +1,14 @@
-import { prisma } from "../../lib/prisma";
-import { AppError } from "../errors/AppError";
-import { DatabaseError } from "../errors/DatabaseError";
+import { prisma } from "../../lib/prisma.ts";
+import { AppError } from "../errors/AppError.ts";
+import { DatabaseError } from "../errors/DatabaseError.ts";
 import bcrypt from "bcrypt";
 import {
   uploadToCloudinary,
   deleteFromCloudinary,
-} from "../utils/uploadToCloudinary";
+} from "../utils/uploadToCloudinary.ts";
 import type { RegisterInput } from "../types/auth.types";
-import type { Login } from "../validators/auth.validator";
-import { generateToken } from "../utils/generateToken";
+import type { Login } from "../validators/auth.validator.ts";
+import { generateToken } from "../utils/generateToken.ts";
 
 const register = async ({
   name,
