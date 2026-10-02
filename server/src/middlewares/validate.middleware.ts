@@ -24,7 +24,6 @@ export const validate = (schema: ZodType<any, any, any>) => {
 
     req.body = data.body;
     req.params = data.params;
-    req.query = data.query;
 
     next();
   };
