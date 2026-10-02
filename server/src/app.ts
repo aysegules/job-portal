@@ -4,9 +4,9 @@ import type { Request, Response } from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-import { errorHandler } from "./middlewares/error.middleware";
+import { errorHandler } from "./middlewares/error.middleware.ts";
 
-import authRoute from "./routes/auth.route";
+import authRoute from "./routes/auth.route.ts";
 
 const app = express();
 
