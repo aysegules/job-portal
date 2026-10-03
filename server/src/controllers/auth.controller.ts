@@ -18,7 +18,7 @@ const register = asyncHandler(async (req: Request, res: Response) => {
   });
 
   res.status(201).json({
-    message: "User registered successfully.",
+    status: "success",
     user,
   });
 });
@@ -29,7 +29,7 @@ const login = asyncHandler(async (req: Request, res: Response) => {
   const { user, token } = await authService.login({ email, password });
 
   res.status(200).json({
-    message: "User logged in successfully.",
+    status: "success",
     token,
     user,
   });
