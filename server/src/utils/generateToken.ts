@@ -1,9 +1,14 @@
 import jwt from "jsonwebtoken";
+import type { JwtPayload } from "../types/auth.types.ts";
 
-const JWT_SECRET = process.env.JWT_SECRET || "secret_key";
+export const generateToken = ({ id, type }: JwtPayload) => {
+  const payload = { id, type };
 
-export const generateToken = (id: string) => {
-  const payload = { id };
+  const JWT_SECRET = process.env.JWT_SECRET;
+
+  if (!JWT_SECRET) {
+    throw new Error("JWT_SECRET is not configured");
+  }
 
   const token = jwt.sign(payload, JWT_SECRET, {
     expiresIn: "3d",
