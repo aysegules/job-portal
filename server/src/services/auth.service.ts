@@ -6,9 +6,10 @@ import {
   uploadToCloudinary,
   deleteFromCloudinary,
 } from "../utils/uploadToCloudinary.ts";
-import type { RegisterInput } from "../types/auth.types";
+import type { RegisterInput } from "../types/auth.types.ts";
 import type { Login } from "../validators/auth.validator.ts";
 import { generateToken } from "../utils/generateToken.ts";
+import { hashPassword } from "../utils/hashPassword.ts";
 
 const register = async ({
   name,
@@ -45,8 +46,7 @@ const register = async ({
       );
     }
 
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const hashedPassword = await hashPassword(password);
 
     const user = await prisma.user.create({
       data: {
@@ -100,7 +100,10 @@ const login = async ({ email, password }: Login) => {
     throw new AppError("Invalid email or password", 401);
   }
 
-  const token = generateToken(existingUser.id);
+  const token = generateToken({
+    id: existingUser.id,
+    type: "user",
+  });
 
   const { password: _, ...user } = existingUser;
 
