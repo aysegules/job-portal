@@ -7,6 +7,9 @@ import cors from "cors";
 import { errorHandler } from "./middlewares/error.middleware.ts";
 
 import authRoute from "./routes/auth.route.ts";
+import companyRoute from "./routes/company.route.ts";
+import jobRoute from "./routes/job.route.ts";
+import userRoute from "./routes/user.route.ts";
 
 const app = express();
 
@@ -39,6 +42,9 @@ app.get("/", (_req: Request, res: Response) => {
 });
 
 app.use(`${VERSION}/auth`, authRoute);
+app.use(`${VERSION}/companies`, companyRoute);
+app.use(`${VERSION}/jobs`, jobRoute);
+app.use(`${VERSION}/users`, userRoute);
 
 app.use(errorHandler);
 export default app;
