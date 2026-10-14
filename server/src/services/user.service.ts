@@ -181,7 +181,7 @@ const updateUserProfile = async ({
   }
 };
 
-export const deleteUser = async (id: string) => {
+const deleteUser = async (id: string) => {
   const user = await prisma.user.findUnique({
     where: {
       id,
@@ -207,4 +207,10 @@ export const deleteUser = async (id: string) => {
   }
 };
 
-export { getUser, applyForJob, getUserJobApplications, updateUserProfile };
+export {
+  getUser,
+  applyForJob,
+  getUserJobApplications,
+  updateUserProfile,
+  deleteUser,
+};
