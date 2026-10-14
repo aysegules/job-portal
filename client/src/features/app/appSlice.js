@@ -6,6 +6,8 @@ const initialState = {
     location: "",
   },
   isSearched: false,
+  showLogin: false,
+  role: "user",
 };
 
 const appSlice = createSlice({
@@ -26,10 +28,23 @@ const appSlice = createSlice({
     setIsSearched: (state, action) => {
       state.isSearched = action.payload;
     },
+
+    setShowLogin: (state, action) => {
+      state.showLogin = action.payload;
+    },
+
+    setRole: (state, action) => {
+      state.role = action.payload;
+    },
   },
 });
 
-export const { setSearchFilter, setIsSearched, updateSearchFilter } =
-  appSlice.actions;
+export const {
+  setSearchFilter,
+  setIsSearched,
+  updateSearchFilter,
+  setShowLogin,
+  setRole,
+} = appSlice.actions;
 
 export default appSlice.reducer;
