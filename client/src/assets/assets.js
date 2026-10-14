@@ -98,6 +98,8 @@ export const JobLocations = [
   "New York",
 ];
 
+export const JobLevels = ["Beginner", "Intermediate", "Senior", "Internship"];
+
 // Sample data for Manage Jobs Page
 export const manageJobsData = [
   {
