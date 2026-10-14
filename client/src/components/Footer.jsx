@@ -10,9 +10,21 @@ const Footer = () => {
         Copyright JobPortal {copyright} {date}{" "}
       </p>
       <div className="flex gap-2.5">
-        <img className="w-9.5" src={assets.facebook_icon} alt="Facebook" />
-        <img className="w-9.5" src={assets.twitter_icon} alt="Twitter" />
-        <img className="w-9.5" src={assets.instagram_icon} alt="Instagram" />
+        <img
+          className="w-9.5 cursor-pointer"
+          src={assets.facebook_icon}
+          alt="Facebook"
+        />
+        <img
+          className="w-9.5 cursor-pointer"
+          src={assets.twitter_icon}
+          alt="Twitter"
+        />
+        <img
+          className="w-9.5 cursor-pointer"
+          src={assets.instagram_icon}
+          alt="Instagram"
+        />
       </div>
     </footer>
   );
