@@ -35,4 +35,13 @@ const login = asyncHandler(async (req: Request, res: Response) => {
   });
 });
 
-export { register, login };
+const logout = asyncHandler(async (req: Request, res: Response) => {
+  res.cookie("jwt", "", {
+    httpOnly: true,
+    expires: new Date(0),
+  });
+
+  res.status(200).send();
+});
+
+export { register, login, logout };
