@@ -13,7 +13,7 @@ const router = Router();
 
 router.use(authenticateUser);
 
-router.get("/", authenticateUser, getUser);
+router.get("/me", authenticateUser, getUser);
 router.post("/apply/:jobId", applyForJob);
 router.get("/applications", getUserJobApplications);
 router.patch(
