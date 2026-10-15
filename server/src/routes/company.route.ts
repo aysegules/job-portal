@@ -20,7 +20,11 @@ router.get("/company", authenticateCompany, getCompany);
 router.post("/job", authenticateCompany, postJob);
 router.get("/applicants", authenticateCompany, getCompanyJobApplicants);
 router.get("/list-jobs", authenticateCompany, getCompanyPostedJobs);
-router.patch("/change-status", authenticateCompany, changeJobApplicationStatus);
+router.patch(
+  "/change-status/:id",
+  authenticateCompany,
+  changeJobApplicationStatus,
+);
 router.post("/change-visibility/:id", authenticateCompany, changeJobVisibility);
 
 export default router;
