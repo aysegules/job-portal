@@ -10,7 +10,10 @@ import bcrypt from "bcrypt";
 import type { Login } from "../validators/auth.validator.ts";
 import { generateToken } from "../utils/generateToken.ts";
 import type { PostJob } from "../validators/company.validator.ts";
-import type { RegisterInput } from "../types/company.types.ts";
+import type {
+  ChangeApplicationStatus,
+  RegisterInput,
+} from "../types/company.types.ts";
 
 const registerCompany = async ({
   name,
@@ -122,7 +125,40 @@ const postJob = async (
   return job;
 };
 
-const getCompanyJobApplicants = async () => {};
+const getCompanyJobApplicants = async (companyId: string) => {
+  const company = await prisma.company.findUnique({
+    where: { id: companyId },
+  });
+
+  if (!company) {
+    throw new AppError("Company not found", 404);
+  }
+
+  const applications = await prisma.jobApplication.findMany({
+    where: {
+      job: {
+        companyId,
+      },
+    },
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          img: true,
+          resume: true,
+        },
+      },
+      job: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  return applications;
+};
 
 const getCompanyPostedJobs = async (companyId: string) => {
   const jobs = await prisma.job.findMany({
@@ -144,16 +180,35 @@ const getCompanyPostedJobs = async (companyId: string) => {
     },
   });
 
-  if (Object.keys(jobs).length === 0) {
-    throw new AppError("No job found", 404);
+  if (jobs.length === 0) {
+    return [];
   }
 
-  //todo:add number of applicant info in jobs
-
-  return jobs;
+  return jobs.map((job) => ({
+    ...job,
+    applicants: job.jobApplications.length,
+  }));
 };
 
-const changeJobApplicationStatus = async () => {};
+const changeJobApplicationStatus = async ({
+  id,
+  status,
+}: ChangeApplicationStatus) => {
+  const application = await prisma.jobApplication.findUnique({ where: { id } });
+
+  if (!application) {
+    throw new AppError("Application not found", 404);
+  }
+
+  const updatedApplication = await prisma.jobApplication.update({
+    where: { id },
+    data: {
+      status,
+    },
+  });
+
+  return updatedApplication;
+};
 
 const changeJobVisibility = async ({
   id,
