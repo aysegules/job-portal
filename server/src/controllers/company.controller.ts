@@ -69,9 +69,17 @@ const postJob = asyncHandler(async (req: AuthRequest, res: Response) => {
   });
 });
 
-//todo:get-company-job-applicants
 const getCompanyJobApplicants = asyncHandler(
-  async (req: Request, res: Response) => {},
+  async (req: AuthRequest, res: Response) => {
+    const companyId = req.company?.id as string;
+
+    const applicants = await companyService.getCompanyJobApplicants(companyId);
+
+    res.status(200).json({
+      status: "success",
+      applicants,
+    });
+  },
 );
 
 const getCompanyPostedJobs = asyncHandler(
@@ -87,9 +95,21 @@ const getCompanyPostedJobs = asyncHandler(
   },
 );
 
-//todo:change-job-application-status
 const changeJobApplicationStatus = asyncHandler(
-  async (req: Request, res: Response) => {},
+  async (req: Request, res: Response) => {
+    const { id } = req.params as { id: string };
+    const { status } = req.body;
+    
+    const application = await companyService.changeJobApplicationStatus({
+      id,
+      status,
+    });
+
+    res.status(200).json({
+      status: "success",
+      application,
+    });
+  },
 );
 
 const changeJobVisibility = asyncHandler(
