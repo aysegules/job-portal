@@ -12,4 +12,15 @@ const postJobSchema = z.object({
   }),
 });
 
+const changeApplicationStatusSchema = z.object({
+  params: z.object({
+    id: z.string(),
+  }),
+  body: z.object({
+    status: z.enum(["pending", "approved", "rejected"]),
+  }),
+});
+
 export type PostJob = z.infer<typeof postJobSchema>["body"];
+
+export { postJobSchema, changeApplicationStatusSchema };
