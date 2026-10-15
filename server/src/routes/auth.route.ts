@@ -2,7 +2,7 @@ import { Router } from "express";
 import { upload } from "../middlewares/multer.middleware.ts";
 import { validate } from "../middlewares/validate.middleware.ts";
 import { loginSchema, registerSchema } from "../validators/auth.validator.ts";
-import { login, register } from "../controllers/auth.controller.ts";
+import { login, logout, register } from "../controllers/auth.controller.ts";
 
 const router = Router();
 
@@ -17,5 +17,7 @@ router.post(
 );
 
 router.post("/login", validate(loginSchema), login);
+
+router.post("/logout", logout);
 
 export default router;
