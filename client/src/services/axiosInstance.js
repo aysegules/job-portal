@@ -1,15 +1,23 @@
 import axios from "axios";
+import { store } from "../app/store.js";
 
 const BASE_URL = import.meta.env?.VITE_BASE_URL;
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
+  withCredentials: true,
   timeout: 30000,
 });
 
 axiosInstance.interceptors.request.use(
   (config) => {
     console.log(`API Request: ${config.method?.toUpperCase()}`);
+
+    const token = store.getState().app.token;
+
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
 
     if (
       config.method === "post" ||
