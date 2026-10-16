@@ -1,11 +1,18 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import { useLogin, useRegister } from "../hooks/useAuth";
+import { useCompanyLogin, useCompanyRegister } from "../hooks/useCompany";
+import { setResume, setShowLogin, setToken } from "../features/app/appSlice";
+//TODO: get resume and img after other infos submitted
 const Login = () => {
   const [mode, setMode] = useState("login");
 
   const { role } = useSelector((store) => store.app);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -14,7 +21,21 @@ const Login = () => {
     confirmPassword: "",
   });
 
+  const loginMutation = useLogin();
+  const registerMutation = useRegister();
+
+  const loginCompanyMutation = useCompanyLogin();
+  const registerCompanyMutation = useCompanyRegister();
+
   const isLogin = mode === "login";
+  const activeMutation =
+    role === "recruiter"
+      ? isLogin
+        ? loginCompanyMutation
+        : registerCompanyMutation
+      : isLogin
+        ? loginMutation
+        : registerMutation;
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -29,6 +50,49 @@ const Login = () => {
     if (!isLogin && formData.password !== formData.confirmPassword) {
       toast.warn("Passwords don't match");
       return;
+    }
+
+    const payload = {
+      email: formData.email.trim(),
+      password: formData.password,
+      ...(!isLogin && { name: formData.name.trim() }),
+    };
+
+    try {
+      const data = await activeMutation.mutateAsync(payload);
+
+      if (isLogin) {
+        if (!data.token) {
+          throw new Error("The server did not return an authentication token.");
+        }
+
+        dispatch(setToken(data.token));
+
+        if (role === "user") {
+          dispatch(setResume(data.user.resume));
+        }
+
+        dispatch(setShowLogin(false));
+        toast.success("Logged in successfully.");
+
+        if (role === "recruiter") {
+          navigate("/dashboard");
+        }
+      } else {
+        toast.success("Account created. Please log in.");
+        setFormData((prev) => ({
+          ...prev,
+          password: "",
+          confirmPassword: "",
+        }));
+        setMode("login");
+      }
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+          error.message ||
+          "Unable to complete your request.",
+      );
     }
   };
 
@@ -56,9 +120,11 @@ const Login = () => {
             <input
               id="name"
               name="name"
-              type="name"
+              type="text"
               value={formData.name}
               onChange={handleChange}
+              minLength={2}
+              maxLength={100}
               required
               className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-blue-500"
               placeholder="John Doe"
@@ -76,6 +142,7 @@ const Login = () => {
             type="email"
             value={formData.email}
             onChange={handleChange}
+            autoComplete="email"
             required
             className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-blue-500"
             placeholder="john_doe@sample.com"
@@ -92,6 +159,9 @@ const Login = () => {
             type="password"
             value={formData.password}
             onChange={handleChange}
+            minLength={6}
+            maxLength={100}
+            autoComplete={isLogin ? "current-password" : "new-password"}
             required
             className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-blue-500"
             placeholder="************"
@@ -114,6 +184,9 @@ const Login = () => {
               type="password"
               value={formData.confirmPassword}
               onChange={handleChange}
+              minLength={6}
+              maxLength={100}
+              autoComplete="new-password"
               required
               className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-blue-500"
               placeholder="************"
@@ -123,15 +196,21 @@ const Login = () => {
 
         <button
           type="submit"
+          disabled={activeMutation.isPending}
           className="w-full rounded-lg bg-blue-600 px-4 py-3 font-semibold text-white hover:bg-blue-700"
         >
-          {isLogin ? "Login" : "Register"}
+          {activeMutation.isPending
+            ? "Please wait..."
+            : isLogin
+              ? "Login"
+              : "Register"}
         </button>
 
         <p className="text-center text-sm text-slate-600">
           {isLogin ? "Don't have an account?" : "Already have an account?"}
           <button
             type="button"
+            disabled={activeMutation.isPending}
             onClick={() => {
               setMode(isLogin ? "register" : "login");
             }}
