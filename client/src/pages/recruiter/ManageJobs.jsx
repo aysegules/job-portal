@@ -13,7 +13,8 @@ const ManageJobs = () => {
     queryKey: ["companyJobs"],
     queryFn: getCompanyPostedJobs,
   });
-  const companyJobs = data.jobs;
+
+  const companyJobs = data?.jobs;
 
   const visibilityMutation = useChangeVisibility();
 
@@ -98,7 +99,7 @@ const ManageJobs = () => {
                   </button>
                 </td>
               </tr>
-            ) : companyJobs?.length > 0 ? (
+            ) : companyJobs.length > 0 ? (
               companyJobs.map((job, index) => (
                 <tr key={job.id} className="text-gray-700 border-b">
                   <td className="py-2 px-4 max-sm:hidden text-center">
