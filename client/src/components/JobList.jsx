@@ -166,7 +166,6 @@ const JobList = () => {
           </div>
         ) : isError ? (
           <div className="text-center text-red-600" role="alert">
-            {toast.error(error.message || "Unable to load jobs")}
             <button
               onClick={() => refetch()}
               className="mt-3 rounded border border-red-300 px-4 py-2 hover:bg-red-50"
