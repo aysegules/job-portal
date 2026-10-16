@@ -1,7 +1,7 @@
 import axios from "axios";
 import { store } from "../app/store.js";
 
-const BASE_URL = import.meta.env?.VITE_BASE_URL;
+const BASE_URL = import.meta.env?.BASE_URL;
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
