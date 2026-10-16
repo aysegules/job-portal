@@ -1,11 +1,28 @@
 import { useState } from "react";
-import { assets, jobsApplied } from "../assets/assets";
+import { assets } from "../assets/assets";
 import moment from "moment";
+import { useQuery } from "@tanstack/react-query";
+import { getUserJobApplications } from "../services/user/getUserJobApplications";
+import { useDispatch, useSelector } from "react-redux";
+import { setResume } from "../features/app/appSlice";
+import Loading from "../components/Loading";
+import { useUpdateUserProfile } from "../hooks/useUser";
+import { toast } from "react-toastify";
 
 const Applications = () => {
   const [isEdit, setIsEdit] = useState(false);
 
-  const [resume, setResume] = useState(null);
+  const dispatch = useDispatch();
+  const { resume } = useSelector((store) => store.app);
+
+  const { data, isPending, isError, error, refetch } = useQuery({
+    queryKey: ["appliedJobs"],
+    queryFn: getUserJobApplications,
+  });
+
+  const appliedJobs = data.applications;
+
+  const updateMutation = useUpdateUserProfile();
 
   const formatApplicationDate = (date) => {
     return moment(date).format("ll");
@@ -14,6 +31,7 @@ const Applications = () => {
   const getStatusColor = (status) => {
     switch (status?.toLowerCase()) {
       case "accepted":
+      case "approved":
         return "text-green-700";
       case "rejected":
         return "text-red-700";
@@ -51,6 +69,20 @@ const Applications = () => {
     },
   ];
 
+  const handleUpdateResume = async () => {
+    try {
+      await updateMutation.mutateAsync(resume);
+
+      toast.success("Resume updated succesfully");
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+          error.message ||
+          "Unable to complete your request.",
+      );
+    }
+  };
+
   return (
     <div className="container px-4 min-h-[65vh] 2xl:px-20 mx-auto my-10">
       <h2 className="text-xl font-semibold">Your Resume</h2>
@@ -59,11 +91,11 @@ const Applications = () => {
           <>
             <label className="flex items-center" htmlFor="uploadResume">
               <p className="bg-blue-100 text-blue-600 px-4 py-2 rounded-lg mr-2">
-                Select Resume
+                {resume ? resume.name : "Select Resume"}
               </p>
               <input
                 id="uploadResume"
-                onChange={(e) => setResume(e.target.files[0])}
+                onChange={(e) => dispatch(setResume(e.target.files[0]))}
                 type="file"
                 accept="application/pdf"
                 hidden
@@ -71,7 +103,10 @@ const Applications = () => {
               <img src={assets.profile_upload_icon} alt="" />
             </label>
             <button
-              onClick={() => setIsEdit(false)}
+              onClick={() => {
+                handleUpdateResume();
+                setIsEdit(false);
+              }}
               className="bg-green-100 border border-green-400 rounded-lg px-4 py-2"
             >
               Save
@@ -81,7 +116,8 @@ const Applications = () => {
           <div className="flex gap-2">
             <a
               className="bg-blue-100 text-blue-600 px-4 py-2 rounded-lg"
-              href=""
+              href={resume}
+              target="_blank"
             >
               Resume
             </a>
@@ -112,31 +148,60 @@ const Applications = () => {
           </tr>
         </thead>
         <tbody>
-          {jobsApplied.length > 0 ? (
-            jobsApplied.map((job, index) => (
-              <tr key={job.id}>
+          {isPending ? (
+            <tr>
+              <td colSpan={6} className="p-3 text-center">
+                <Loading />
+              </td>
+            </tr>
+          ) : isError ? (
+            <tr>
+              <td colSpan={6} className="p-3 text-center text-md text-gray-500">
+                An error occurred! {error.message}
+                <button
+                  onClick={() => refetch()}
+                  className="ml-2 text-blue-500"
+                >
+                  Try again
+                </button>
+              </td>
+            </tr>
+          ) : appliedJobs.length > 0 ? (
+            appliedJobs.map((application, index) => (
+              <tr key={application.id}>
                 <td className="py-3 px-4 text-center">{index + 1}</td>
-                <td className="py-3 px-4 text-center">{job.company}</td>
-                <td className="px-4 py-2 text-center">{job.title}</td>
-                <td className="px-4 py-2 text-center max-sm:hidden">
-                  {job.location}
+                <td className="py-3 px-4 text-center flex justify-center items-center gap-2">
+                  <img
+                    src={application.job.company.img}
+                    alt={`${application.job.company}'s img`}
+                    className="w-8 rounded-full"
+                  />
+                  {application.job.company.name}
+                </td>
+                <td className="px-4 py-2 text-center">
+                  {application.job.title}
                 </td>
                 <td className="px-4 py-2 text-center max-sm:hidden">
-                  {formatApplicationDate(job.createdAt)}
+                  {application.job.location}
+                </td>
+                <td className="px-4 py-2 text-center max-sm:hidden">
+                  {formatApplicationDate(application.createdAt)}
                 </td>
                 <td className="px-4 py-2 text-center">
                   <span
-                    className={`${getStatusColor(job.status)} px-4 py-1.5 rounded`}
+                    className={`${getStatusColor(application.status)} px-4 py-1.5 rounded`}
                   >
-                    {job.status}
+                    {application.status}
                   </span>
                 </td>
               </tr>
             ))
           ) : (
-            <p className="p-5 text-gray-600 font-semibold text-center">
-              No jobs applied
-            </p>
+            <tr>
+              <td colSpan={6} className="p-3 text-center text-md text-gray-500">
+                No jobs applied
+              </td>
+            </tr>
           )}
         </tbody>
       </table>
