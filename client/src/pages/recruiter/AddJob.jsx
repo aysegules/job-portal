@@ -1,16 +1,20 @@
 import { useRef, useState, useEffect } from "react";
 import Quill from "quill";
 import { JobCategories, JobLevels, JobLocations } from "../../assets/assets";
+import { toast } from "react-toastify";
+import { usePostJob } from "../../hooks/useCompany";
+
+const initialFormData = {
+  title: "",
+  description: "",
+  location: "",
+  category: "",
+  level: "",
+  salary: 0,
+};
 
 const AddJob = () => {
-  const [formData, setFormData] = useState({
-    title: "Software Developer",
-    description: "",
-    location: "Remote",
-    category: "Programming",
-    level: "Beginner",
-    salary: 0,
-  });
+  const [formData, setFormData] = useState(initialFormData);
 
   const editorRef = useRef(null);
   const quillRef = useRef(null);
@@ -24,16 +28,53 @@ const AddJob = () => {
   }, []);
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: name === "salary" ? Number(value) : value,
     }));
   };
 
+  const postJobMutation = usePostJob();
+
+  const resetForm = () => {
+    setFormData(initialFormData);
+
+    if (quillRef.current) {
+      quillRef.current.setText("");
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const payload = {
+        ...formData,
+        description: quillRef.current?.root.innerHTML || "",
+      };
+
+      await postJobMutation.mutateAsync(payload);
+
+      toast.success("Job created successfully");
+      resetForm();
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+          error.message ||
+          "Unable to complete your request.",
+      );
+    }
+  };
+
   return (
-    <form className="container p-4 flex flex-col w-full items-start gap-3">
+    <form
+      onSubmit={handleSubmit}
+      className="container p-4 flex flex-col w-full items-start gap-3"
+    >
       <div className="w-full">
-        <label className="mb-2" htmlFor="title">
+        <label className="mb-2 block" htmlFor="title">
           Job Title
         </label>
         <input
@@ -59,6 +100,8 @@ const AddJob = () => {
           </label>
           <select
             className="w-full px-3 py-2 border-2 border-gray-300 rounded"
+            name="location"
+            value={formData.location}
             onChange={handleChange}
           >
             {JobLocations.map((location) => (
@@ -75,6 +118,8 @@ const AddJob = () => {
 
           <select
             className="w-full px-3 py-2 border-2 border-gray-300 rounded"
+            name="category"
+            value={formData.category}
             onChange={handleChange}
           >
             {JobCategories.map((category) => (
@@ -90,6 +135,8 @@ const AddJob = () => {
           </label>
           <select
             className="w-full px-3 py-2 border-2 border-gray-300 rounded"
+            name="level"
+            value={formData.level}
             onChange={handleChange}
           >
             {JobLevels.map((level) => (
