@@ -8,6 +8,8 @@ const initialState = {
   isSearched: false,
   showLogin: false,
   role: "user",
+  token: "",
+  resume: null,
 };
 
 const appSlice = createSlice({
@@ -36,6 +38,14 @@ const appSlice = createSlice({
     setRole: (state, action) => {
       state.role = action.payload;
     },
+
+    setToken: (state, action) => {
+      state.token = action.payload;
+    },
+
+    setResume: (state, action) => {
+      state.resume = action.payload;
+    },
   },
 });
 
@@ -45,6 +55,8 @@ export const {
   updateSearchFilter,
   setShowLogin,
   setRole,
+  setToken,
+  setResume,
 } = appSlice.actions;
 
 export default appSlice.reducer;
