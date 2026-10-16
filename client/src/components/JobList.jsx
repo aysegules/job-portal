@@ -1,29 +1,38 @@
 import { useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  assets,
-  JobCategories,
-  JobLocations,
-  jobsData,
-} from "../assets/assets";
+import { assets, JobCategories, JobLocations } from "../assets/assets";
 import { updateSearchFilter } from "../features/app/appSlice";
 import Filter from "./Filter";
 import JobCard from "./JobCard";
+import { useQuery } from "@tanstack/react-query";
+import { getAllJobs } from "../services/job/getAllJobs";
+import Loading from "../components/Loading";
+import { toast } from "react-toastify";
 
 const JobList = () => {
-  const { searchFilter, isSearched } = useSelector((state) => state.app);
   const dispatch = useDispatch();
+  const { searchFilter, isSearched } = useSelector((store) => store.app);
+
+  const { data, isPending, isError, error, refetch } = useQuery({
+    queryKey: ["jobs"],
+    queryFn: getAllJobs,
+  });
 
   const [showFilter, setShowFilter] = useState(false);
-  const [pageSelection, setPageSelection] = useState({ filterKey: null, page: 1 });
+  const [pageSelection, setPageSelection] = useState({
+    filterKey: null,
+    page: 1,
+  });
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedLocations, setSelectedLocations] = useState([]);
+
   const filterKey = JSON.stringify([
     searchFilter.title,
     searchFilter.location,
     selectedCategories,
     selectedLocations,
   ]);
+
   const currentPage =
     pageSelection.filterKey === filterKey ? pageSelection.page : 1;
   const setCurrentPage = (page) => setPageSelection({ filterKey, page });
@@ -45,14 +54,14 @@ const JobList = () => {
   };
 
   const filteredJobs = useMemo(() => {
-    let result = [...jobsData];
+    let result = [...(data?.jobs ?? [])];
 
     if (searchFilter.title) {
       const title = searchFilter.title.toLowerCase();
       result = result.filter(
         (job) =>
           job.title.toLowerCase().includes(title) ||
-          job.companyId?.name?.toLowerCase().includes(title),
+          job.company?.name?.toLowerCase().includes(title),
       );
     }
 
@@ -74,7 +83,7 @@ const JobList = () => {
     }
 
     return result;
-  }, [searchFilter, selectedCategories, selectedLocations]);
+  }, [searchFilter, selectedCategories, selectedLocations, data]);
 
   return (
     <div className="container 2xl:px-20 mx-auto flex flex-col lg:flex-row max-lg:space-y-8 py-8">
@@ -148,15 +157,38 @@ const JobList = () => {
         </h3>
         <p className="mb-8">Get your desired job from top companies</p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-          {filteredJobs
-            .slice((currentPage - 1) * 6, currentPage * 6)
-            .map((job) => (
-              <JobCard key={job.id} job={job} />
-            ))}
-        </div>
+        {isPending ? (
+          <div>
+            <p className="text-gray-500" role="status">
+              Loading jobs...
+            </p>
+            <Loading />
+          </div>
+        ) : isError ? (
+          <div className="text-center text-red-600" role="alert">
+            {toast.error(error.message || "Unable to load jobs")}
+            <button
+              onClick={() => refetch()}
+              className="mt-3 rounded border border-red-300 px-4 py-2 hover:bg-red-50"
+            >
+              Try again
+            </button>
+          </div>
+        ) : filteredJobs.length === 0 ? (
+          <p className="text-gray-500" role="status">
+            No jobs found. Try changing your search or filters.
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+            {filteredJobs
+              .slice((currentPage - 1) * 6, currentPage * 6)
+              .map((job) => (
+                <JobCard key={job.id} job={job} />
+              ))}
+          </div>
+        )}
 
-        {filteredJobs.length > 0 && (
+        {!isPending && !isError && filteredJobs.length > 0 && (
           <div className="flex items-center justify-center space-x-2 mt-10">
             <a href="#job-list">
               <img
