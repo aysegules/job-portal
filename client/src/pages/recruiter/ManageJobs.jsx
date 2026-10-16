@@ -1,10 +1,37 @@
-import React from "react";
-import { manageJobsData } from "../../assets/assets";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getCompanyPostedJobs } from "../../services/company/getCompanyPostedJobs";
+import { toast } from "react-toastify";
+import { useChangeVisibility } from "../../hooks/useCompany";
+import Loading from "../../components/Loading";
 
 const ManageJobs = () => {
   const navigate = useNavigate();
+
+  const { data, isPending, isError, error, refetch } = useQuery({
+    queryKey: ["companyJobs"],
+    queryFn: getCompanyPostedJobs,
+  });
+  const companyJobs = data.jobs;
+
+  const visibilityMutation = useChangeVisibility();
+
+  const handleChangeVisibility = async (id) => {
+    try {
+      await visibilityMutation.mutateAsync(id);
+
+      refetch();
+
+      toast.success("Visibility has changed succesfully");
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message ||
+          error.message ||
+          "Unable to complete your request.",
+      );
+    }
+  };
 
   const headers = [
     {
@@ -32,6 +59,7 @@ const ManageJobs = () => {
       isHidden: false,
     },
   ];
+
   return (
     <div className="container p-4 max-w-5xl">
       <div className="overflow-x-auto">
@@ -49,24 +77,61 @@ const ManageJobs = () => {
             </tr>
           </thead>
           <tbody>
-            {manageJobsData.map((job, index) => (
-              <tr key={job.id} className="text-gray-700 border-b">
-                <td className="py-2 px-4 max-sm:hidden text-center">
-                  {index + 1}
-                </td>
-                <td className="py-2 px-4 text-center">{job.title}</td>
-                <td className="py-2 px-4 max-sm:hidden text-center">
-                  {moment(job.createdAt).format("ll")}
-                </td>
-                <td className="py-2 px-4 max-sm:hidden text-center">
-                  {job.location}
-                </td>
-                <td className="py-2 px-4 text-center">{job.applicants}</td>
-                <td className="py-2 px-4 text-center">
-                  <input className="scale-125 ml-4" type="checkbox" />
+            {isPending ? (
+              <tr>
+                <td colSpan={6} className="p-3 text-center">
+                  <Loading />
                 </td>
               </tr>
-            ))}
+            ) : isError ? (
+              <tr>
+                <td
+                  colSpan={6}
+                  className="p-3 text-center text-md text-gray-500"
+                >
+                  An error occurred! {error.message}
+                  <button
+                    onClick={() => refetch()}
+                    className="ml-2 text-blue-500"
+                  >
+                    Try again
+                  </button>
+                </td>
+              </tr>
+            ) : companyJobs?.length > 0 ? (
+              companyJobs.map((job, index) => (
+                <tr key={job.id} className="text-gray-700 border-b">
+                  <td className="py-2 px-4 max-sm:hidden text-center">
+                    {index + 1}
+                  </td>
+                  <td className="py-2 px-4 text-center">{job.title}</td>
+                  <td className="py-2 px-4 max-sm:hidden text-center">
+                    {moment(job.createdAt).format("ll")}
+                  </td>
+                  <td className="py-2 px-4 max-sm:hidden text-center">
+                    {job.location}
+                  </td>
+                  <td className="py-2 px-4 text-center">{job.applicants}</td>
+                  <td className="py-2 px-4 text-center">
+                    <input
+                      className="scale-125 ml-4"
+                      type="checkbox"
+                      checked={job.visible}
+                      onClick={() => handleChangeVisibility(job.id)}
+                    />
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td
+                  colSpan={6}
+                  className="p-3 text-center text-md text-gray-500"
+                >
+                  No jobs
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
 
