@@ -8,6 +8,7 @@ import { setResume } from "../features/app/appSlice";
 import Loading from "../components/Loading";
 import { useUpdateUserProfile } from "../hooks/useUser";
 import { toast } from "react-toastify";
+import { getUser } from "../services/user/getUser";
 
 const Applications = () => {
   const [isEdit, setIsEdit] = useState(false);
@@ -20,7 +21,14 @@ const Applications = () => {
     queryFn: getUserJobApplications,
   });
 
-  const appliedJobs = data.applications;
+  const userQuery = useQuery({
+    queryKey: ["user"],
+    queryFn: getUser,
+  });
+
+  const user = userQuery.data?.user;
+
+  const appliedJobs = data?.applications;
 
   const updateMutation = useUpdateUserProfile();
 
@@ -71,7 +79,9 @@ const Applications = () => {
 
   const handleUpdateResume = async () => {
     try {
-      await updateMutation.mutateAsync(resume);
+      await updateMutation.mutateAsync({ resume });
+
+      userQuery.refetch();
 
       toast.success("Resume updated succesfully");
     } catch (error) {
@@ -83,15 +93,17 @@ const Applications = () => {
     }
   };
 
+  console.log(resume);
+
   return (
     <div className="container px-4 min-h-[65vh] 2xl:px-20 mx-auto my-10">
       <h2 className="text-xl font-semibold">Your Resume</h2>
       <div className="flex gap-2 mb-6 mt-3">
-        {isEdit ? (
+        {isEdit || (user && user.resume === null) ? (
           <>
             <label className="flex items-center" htmlFor="uploadResume">
               <p className="bg-blue-100 text-blue-600 px-4 py-2 rounded-lg mr-2">
-                {resume ? resume.name : "Select Resume"}
+                {resume.name ? resume.name : "Select Resume"}
               </p>
               <input
                 id="uploadResume"
@@ -116,7 +128,7 @@ const Applications = () => {
           <div className="flex gap-2">
             <a
               className="bg-blue-100 text-blue-600 px-4 py-2 rounded-lg"
-              href={resume}
+              href={user.resume}
               target="_blank"
             >
               Resume
@@ -168,7 +180,7 @@ const Applications = () => {
             </tr>
           ) : appliedJobs.length > 0 ? (
             appliedJobs.map((application, index) => (
-              <tr key={application.id}>
+              <tr key={application.id} className="capitalize">
                 <td className="py-3 px-4 text-center">{index + 1}</td>
                 <td className="py-3 px-4 text-center flex justify-center items-center gap-2">
                   <img
