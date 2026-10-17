@@ -105,11 +105,13 @@ const ManageJobs = () => {
                   <td className="py-2 px-4 max-sm:hidden text-center">
                     {index + 1}
                   </td>
-                  <td className="py-2 px-4 text-center">{job.title}</td>
-                  <td className="py-2 px-4 max-sm:hidden text-center">
+                  <td className="py-2 px-4 text-center capitalize">
+                    {job.title}
+                  </td>
+                  <td className="py-2 px-4 max-sm:hidden text-center capitalize">
                     {moment(job.createdAt).format("ll")}
                   </td>
-                  <td className="py-2 px-4 max-sm:hidden text-center">
+                  <td className="py-2 px-4 max-sm:hidden text-center capitalize">
                     {job.location}
                   </td>
                   <td className="py-2 px-4 text-center">{job.applicants}</td>
