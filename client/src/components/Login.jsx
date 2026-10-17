@@ -62,16 +62,6 @@ const Login = () => {
       return;
     }
 
-    // const payload = {
-    //   email: formData.email.trim(),
-    //   password: formData.password,
-    //   ...(!isLogin && {
-    //     name: formData.name.trim(),
-    //     img: formData.img,
-    //     resume: formData.resume,
-    //   }),
-    // };
-
     const payload = {
       email: formData.email.trim(),
       password: formData.password,
