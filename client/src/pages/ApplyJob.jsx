@@ -108,7 +108,7 @@ const ApplyJob = () => {
         job && (
           <div className="bg-white text-black rounded-lg w-full">
             <div className="flex justify-center md:justify-between flex-wrap gap-8 px-14 py-20 mb-6 bg-sky-50 border border-sky-400 rounded-xl">
-              <div className="flex flex-col md:flex-row items-center">
+              <div className="flex flex-col md:flex-row items-center capitalize">
                 <img
                   className="h-24 bg-white rounded-lg p-4 mr-4 max-md:mb-4 border"
                   src={job.company.img}
@@ -147,7 +147,7 @@ const ApplyJob = () => {
                     applyMutation.isPending ||
                     applicationsQuery.isPending
                   }
-                  className="bg-blue-600 p-2.5 px-10 text-white rounded"
+                  className={`bg-blue-600 p-2.5 px-10 text-white rounded ${isApplied && "bg-sky-300 border-sky-400 shadow"}`}
                 >
                   {isApplied
                     ? "Applied"
@@ -177,7 +177,7 @@ const ApplyJob = () => {
                     applyMutation.isPending ||
                     applicationsQuery.isPending
                   }
-                  className="bg-blue-600 p-2.5 px-10 text-white rounded mt-10"
+                  className={`bg-blue-600 p-2.5 px-10 text-white rounded mt-10  ${isApplied && "bg-sky-300 border-sky-400 shadow"}`}
                 >
                   {isApplied
                     ? "Applied"
