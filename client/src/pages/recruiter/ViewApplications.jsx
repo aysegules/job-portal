@@ -95,7 +95,7 @@ const ViewApplications = () => {
             jobApplications.map((application, index) => (
               <tr className="text-gray-700 border-b" key={application.id}>
                 <td className="py-2 px-4 text-center"> {index + 1}</td>
-                <td className="py-2 px-4 text-center flex justify-center items-center">
+                <td className="py-2 px-4 text-center flex justify-center items-center capitalize">
                   <img
                     className="w-10 rounded-full mr-3 max-sm:hidden"
                     src={application.user.img}
@@ -103,10 +103,10 @@ const ViewApplications = () => {
                   />
                   <span>{application.user.name}</span>
                 </td>
-                <td className="py-2 px-4  text-center max-sm:hidden">
+                <td className="py-2 px-4 text-center max-sm:hidden capitalize">
                   {application.job.title}
                 </td>
-                <td className="py-2 px-4  text-center max-sm:hidden">
+                <td className="py-2 px-4 text-center max-sm:hidden capitalize">
                   {application.job.location}
                 </td>
                 <td className="py-2 px-4 ">
@@ -148,7 +148,7 @@ const ViewApplications = () => {
                       </div>
                     </div>
                   ) : (
-                    <div>{application.status}</div>
+                    <div className="capitalize">{application.status}</div>
                   )}
                 </td>
               </tr>
