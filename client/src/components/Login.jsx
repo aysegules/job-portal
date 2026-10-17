@@ -5,9 +5,11 @@ import { toast } from "react-toastify";
 import { useLogin, useRegister } from "../hooks/useAuth";
 import { useCompanyLogin, useCompanyRegister } from "../hooks/useCompany";
 import { setResume, setShowLogin, setToken } from "../features/app/appSlice";
+import { assets } from "../assets/assets";
 //TODO: get resume and img after other infos submitted
 const Login = () => {
   const [mode, setMode] = useState("login");
+  const [isTextSubmitted, setIsTextSubmitted] = useState(false);
 
   const { role } = useSelector((store) => store.app);
 
@@ -19,6 +21,8 @@ const Login = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    img: null,
+    resume: null,
   });
 
   const loginMutation = useLogin();
@@ -38,9 +42,10 @@ const Login = () => {
         : registerMutation;
 
   const handleChange = (e) => {
+    const { name, type, value, files } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: type === "file" ? files[0] || null : value,
     }));
   };
 
@@ -52,14 +57,28 @@ const Login = () => {
       return;
     }
 
+    if (!isLogin && !isTextSubmitted) {
+      setIsTextSubmitted(true);
+      return;
+    }
+
     const payload = {
       email: formData.email.trim(),
       password: formData.password,
-      ...(!isLogin && { name: formData.name.trim() }),
+      ...(!isLogin && {
+        name: formData.name.trim(),
+        img: formData.img,
+        resume: formData.resume,
+      }),
     };
 
     try {
       const data = await activeMutation.mutateAsync(payload);
+
+      if (activeMutation.isError) {
+        toast.error(activeMutation.error.message);
+        return;
+      }
 
       if (isLogin) {
         if (!data.token) {
@@ -85,6 +104,7 @@ const Login = () => {
           password: "",
           confirmPassword: "",
         }));
+        setIsTextSubmitted(false);
         setMode("login");
       }
     } catch (error) {
@@ -112,7 +132,7 @@ const Login = () => {
           </p>
         </div>
 
-        {!isLogin && (
+        {!isLogin && !isTextSubmitted && (
           <div>
             <label htmlFor="name" className="mb-2 block text-sm font-medium">
               {role === "recruiter" ? "Company Name" : "Name"}
@@ -132,43 +152,50 @@ const Login = () => {
           </div>
         )}
 
-        <div>
-          <label htmlFor="email" className="mb-2 block text-sm font-medium">
-            {role === "recruiter" ? "Company Email" : "Email"}
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            autoComplete="email"
-            required
-            className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-blue-500"
-            placeholder="john_doe@sample.com"
-          />
-        </div>
+        {!isTextSubmitted && (
+          <>
+            <div>
+              <label htmlFor="email" className="mb-2 block text-sm font-medium">
+                {role === "recruiter" ? "Company Email" : "Email"}
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                autoComplete="email"
+                required
+                className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-blue-500"
+                placeholder="john_doe@sample.com"
+              />
+            </div>
 
-        <div>
-          <label htmlFor="password" className="mb-2 block text-sm font-medium">
-            {role === "recruiter" ? "Company Password" : "Password"}
-          </label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            value={formData.password}
-            onChange={handleChange}
-            minLength={6}
-            maxLength={100}
-            autoComplete={isLogin ? "current-password" : "new-password"}
-            required
-            className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-blue-500"
-            placeholder="************"
-          />
-        </div>
+            <div>
+              <label
+                htmlFor="password"
+                className="mb-2 block text-sm font-medium"
+              >
+                {role === "recruiter" ? "Company Password" : "Password"}
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                value={formData.password}
+                onChange={handleChange}
+                minLength={6}
+                maxLength={100}
+                autoComplete={isLogin ? "current-password" : "new-password"}
+                required
+                className="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-blue-500"
+                placeholder="************"
+              />
+            </div>
+          </>
+        )}
 
-        {!isLogin && (
+        {!isLogin && !isTextSubmitted && (
           <div>
             <label
               htmlFor="confirmPassword"
@@ -194,6 +221,53 @@ const Login = () => {
           </div>
         )}
 
+        {!isLogin && isTextSubmitted && (
+          <div className="flex items-center justify-center gap-4 max-sm:flex-col">
+            <label
+              htmlFor="img"
+              className="mb-2 flex gap-2 items-center text-sm font-medium"
+            >
+              {role === "recruiter" && "Upload Company Image"}
+              <img
+                src={`${formData.img ? URL.createObjectURL(formData.img) : assets.upload_area}`}
+                alt="Upload image"
+                style={{ borderRadius: "50%" }}
+                className="rounded-full w-16"
+              />
+              <input
+                id="img"
+                name="img"
+                type="file"
+                onChange={handleChange}
+                className="w-full rounded-lg border border-slate-300 px-4 py-3 mb-2 outline-none focus:border-blue-500"
+                hidden
+              />
+            </label>
+
+            {role === "user" && (
+              <label
+                htmlFor="resume"
+                className="mb-2 block text-sm font-medium"
+              >
+                <p
+                  className={`bg-blue-100 text-blue-600 px-4 py-2 rounded-lg mr-2 ${formData.resume && "bg-green-100 text-green-600"}`}
+                >
+                  {formData.resume ? formData.resume.name : "Select Resume"}
+                </p>
+                <input
+                  id="resume"
+                  name="resume"
+                  type="file"
+                  accept="application/pdf"
+                  onChange={handleChange}
+                  className="w-full rounded-lg border border-slate-300 px-4 py-3 mb-2 outline-none focus:border-blue-500"
+                  hidden
+                />
+              </label>
+            )}
+          </div>
+        )}
+
         <button
           type="submit"
           disabled={activeMutation.isPending}
@@ -203,7 +277,9 @@ const Login = () => {
             ? "Please wait..."
             : isLogin
               ? "Login"
-              : "Register"}
+              : isTextSubmitted
+                ? "Register"
+                : "Continue"}
         </button>
 
         <p className="text-center text-sm text-slate-600">
@@ -212,6 +288,7 @@ const Login = () => {
             type="button"
             disabled={activeMutation.isPending}
             onClick={() => {
+              setIsTextSubmitted(false);
               setMode(isLogin ? "register" : "login");
             }}
             className="font-semibold text-blue-600 hover:underline"
