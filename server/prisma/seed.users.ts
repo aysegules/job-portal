@@ -1,4 +1,5 @@
 import { prisma } from "../lib/prisma.ts";
+import { hashPassword } from "../src/utils/hashPassword.ts";
 
 const users = [
   {
@@ -408,7 +409,13 @@ const main = async () => {
 
   for (const user of users) {
     await prisma.user.create({
-      data: user,
+      data: {
+        name: user.name,
+        email: user.email,
+        password: await hashPassword(user.password),
+        img: user.img,
+        resume: user.resume,
+      },
     });
 
     console.log(`Created user ${user.name}`);
