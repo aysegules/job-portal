@@ -93,8 +93,6 @@ const Applications = () => {
     }
   };
 
-  console.log(resume);
-
   return (
     <div className="container px-4 min-h-[65vh] 2xl:px-20 mx-auto my-10">
       <h2 className="text-xl font-semibold">Your Resume</h2>
