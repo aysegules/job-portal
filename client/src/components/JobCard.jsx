@@ -8,8 +8,8 @@ const JobCard = ({ job }) => {
       <div className="flex justify-between items-center">
         <img className="h-8" src={job.company.img} alt="Company" />
       </div>
-      <h4 className="font-medium text-xl mt-2">{job.title}</h4>
-      <div className="flex items-center gap-3 mt-2 text-xs">
+      <h4 className="font-medium text-xl mt-2 capitalize">{job.title}</h4>
+      <div className="flex items-center gap-3 mt-2 text-xs capitalize">
         <span className="bg-blue-50 border border-blue-200 px-4 py-1.5 rounded">
           {job.location}
         </span>
