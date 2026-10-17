@@ -6,7 +6,7 @@ import { useLogin, useRegister } from "../hooks/useAuth";
 import { useCompanyLogin, useCompanyRegister } from "../hooks/useCompany";
 import { setResume, setShowLogin, setToken } from "../features/app/appSlice";
 import { assets } from "../assets/assets";
-//TODO: get resume and img after other infos submitted
+
 const Login = () => {
   const [mode, setMode] = useState("login");
   const [isTextSubmitted, setIsTextSubmitted] = useState(false);
@@ -21,8 +21,8 @@ const Login = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    img: null,
-    resume: null,
+    img: "",
+    resume: "",
   });
 
   const loginMutation = useLogin();
@@ -42,10 +42,10 @@ const Login = () => {
         : registerMutation;
 
   const handleChange = (e) => {
-    const { name, type, value, files } = e.target;
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "file" ? files[0] || null : value,
+      [name]: value,
     }));
   };
 
@@ -62,15 +62,26 @@ const Login = () => {
       return;
     }
 
+    // const payload = {
+    //   email: formData.email.trim(),
+    //   password: formData.password,
+    //   ...(!isLogin && {
+    //     name: formData.name.trim(),
+    //     img: formData.img,
+    //     resume: formData.resume,
+    //   }),
+    // };
+
     const payload = {
       email: formData.email.trim(),
       password: formData.password,
-      ...(!isLogin && {
-        name: formData.name.trim(),
-        img: formData.img,
-        resume: formData.resume,
-      }),
     };
+
+    if (!isLogin) {
+      payload.name = formData.name.trim();
+      payload.img = formData.img;
+      payload.resume = formData.resume;
+    }
 
     try {
       const data = await activeMutation.mutateAsync(payload);
@@ -238,7 +249,9 @@ const Login = () => {
                 id="img"
                 name="img"
                 type="file"
-                onChange={handleChange}
+                onChange={(e) => {
+                  setFormData((prev) => ({ ...prev, img: e.target.files[0] }));
+                }}
                 className="w-full rounded-lg border border-slate-300 px-4 py-3 mb-2 outline-none focus:border-blue-500"
                 hidden
               />
@@ -259,7 +272,12 @@ const Login = () => {
                   name="resume"
                   type="file"
                   accept="application/pdf"
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    setFormData((prev) => ({
+                      ...prev,
+                      resume: e.target.files[0],
+                    }));
+                  }}
                   className="w-full rounded-lg border border-slate-300 px-4 py-3 mb-2 outline-none focus:border-blue-500"
                   hidden
                 />
