@@ -15,12 +15,6 @@ const Dashboard = () => {
       path: "/dashboard/manage-jobs",
       icon: assets.home_icon,
     },
-    {
-      id: 3,
-      name: "View Applications",
-      path: "/dashboard/view-applications",
-      icon: assets.person_tick_icon,
-    },
   ];
   return (
     <div className="min-h-screen">
