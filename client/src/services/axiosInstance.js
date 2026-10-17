@@ -24,7 +24,11 @@ axiosInstance.interceptors.request.use(
       config.method === "put" ||
       config.method === "patch"
     ) {
-      config.headers["Content-Type"] = "application/json";
+      if (config.data instanceof FormData) {
+        config.headers.delete("Content-Type");
+      } else {
+        config.headers["Content-Type"] = "application/json";
+      }
     }
 
     return config;
