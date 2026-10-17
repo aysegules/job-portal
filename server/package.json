@@ -1,5 +1,4 @@
 {
-  "$schema": "https://json.schemastore.org/package.json",
   "name": "server",
   "version": "1.0.0",
   "description": "",
@@ -7,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec tsx ./src/server.ts",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "seed:users": "tsx prisma/seed.users.ts",
+    "seed:companies": "tsx prisma/seed.companies.ts",
+    "seed:jobs": "tsx prisma/seed.jobs.ts",
+    "seed:applications": "tsx prisma/seed.applications.ts"
   },
   "keywords": [],
   "author": "",
