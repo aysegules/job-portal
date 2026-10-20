@@ -2,7 +2,7 @@ import { prisma } from "../lib/prisma.ts";
 
 const jobs = [
   {
-    companyId: "02344392-8db7-47c7-b85e-382077703ee5",
+    companyId: "08e02970-0633-4ed0-b5c2-1b6494979ddc",
     title: "Accounting Assistant IV",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -29,7 +29,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "02344392-8db7-47c7-b85e-382077703ee5",
+    companyId: "08e02970-0633-4ed0-b5c2-1b6494979ddc",
     title: "Sales Representative",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -56,7 +56,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "02344392-8db7-47c7-b85e-382077703ee5",
+    companyId: "08e02970-0633-4ed0-b5c2-1b6494979ddc",
     title: "Database Administrator II",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -83,7 +83,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "02344392-8db7-47c7-b85e-382077703ee5",
+    companyId: "08e02970-0633-4ed0-b5c2-1b6494979ddc",
     title: "Database Administrator IV",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -110,7 +110,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "093e0072-1522-408e-a6c8-c843ba46fb9a",
+    companyId: "0d906690-366d-4e7c-b3cc-892a5be93fb7",
     title: "Geological Engineer",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -137,7 +137,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "093e0072-1522-408e-a6c8-c843ba46fb9a",
+    companyId: "0d906690-366d-4e7c-b3cc-892a5be93fb7",
     title: "Business Systems Development Analyst",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -164,7 +164,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "093e0072-1522-408e-a6c8-c843ba46fb9a",
+    companyId: "0d906690-366d-4e7c-b3cc-892a5be93fb7",
     title: "Assistant Professor",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -191,7 +191,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "093e0072-1522-408e-a6c8-c843ba46fb9a",
+    companyId: "0d906690-366d-4e7c-b3cc-892a5be93fb7",
     title: "Account Executive",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -218,7 +218,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "093e0072-1522-408e-a6c8-c843ba46fb9a",
+    companyId: "0d906690-366d-4e7c-b3cc-892a5be93fb7",
     title: "Social Worker",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -245,7 +245,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "12d0b28f-8eea-4cae-b871-71fc08e66941",
+    companyId: "146b69b2-dfbc-425e-b215-05a2d59c92a5",
     title: "Registered Nurse",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -272,7 +272,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "12d0b28f-8eea-4cae-b871-71fc08e66941",
+    companyId: "146b69b2-dfbc-425e-b215-05a2d59c92a5",
     title: "Graphic Designer",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -299,7 +299,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "12d0b28f-8eea-4cae-b871-71fc08e66941",
+    companyId: "146b69b2-dfbc-425e-b215-05a2d59c92a5",
     title: "Computer Systems Analyst III",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -326,7 +326,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "05475986-eef4-45df-aa49-36a9a94dd840",
+    companyId: "1ba27d21-e774-4d0f-ac37-a78ae1a3984f",
     title: "Help Desk Operator",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -353,7 +353,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "05475986-eef4-45df-aa49-36a9a94dd840",
+    companyId: "1ba27d21-e774-4d0f-ac37-a78ae1a3984f",
     title: "Product Engineer",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -380,7 +380,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "57b5e185-f4c4-4df4-b299-b41e535539da",
+    companyId: "1c2b1c29-a33b-4771-aec0-ac14a4433696",
     title: "Clinical Specialist",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -407,7 +407,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "57b5e185-f4c4-4df4-b299-b41e535539da",
+    companyId: "1c2b1c29-a33b-4771-aec0-ac14a4433696",
     title: "Structural Analysis Engineer",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -434,7 +434,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "57b5e185-f4c4-4df4-b299-b41e535539da",
+    companyId: "1c2b1c29-a33b-4771-aec0-ac14a4433696",
     title: "Senior Editor",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -461,7 +461,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "57b5e185-f4c4-4df4-b299-b41e535539da",
+    companyId: "1c2b1c29-a33b-4771-aec0-ac14a4433696",
     title: "Human Resources Manager",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -488,7 +488,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "57b5e185-f4c4-4df4-b299-b41e535539da",
+    companyId: "1c2b1c29-a33b-4771-aec0-ac14a4433696",
     title: "Registered Nurse",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -515,7 +515,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "57b5e185-f4c4-4df4-b299-b41e535539da",
+    companyId: "1c2b1c29-a33b-4771-aec0-ac14a4433696",
     title: "Geological Engineer",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -542,7 +542,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "57b5e185-f4c4-4df4-b299-b41e535539da",
+    companyId: "1c2b1c29-a33b-4771-aec0-ac14a4433696",
     title: "Senior Editor",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -569,7 +569,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "57b5e185-f4c4-4df4-b299-b41e535539da",
+    companyId: "1c2b1c29-a33b-4771-aec0-ac14a4433696",
     title: "Quality Control Specialist",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -596,7 +596,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "57b5e185-f4c4-4df4-b299-b41e535539da",
+    companyId: "1c2b1c29-a33b-4771-aec0-ac14a4433696",
     title: "Food Chemist",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -623,7 +623,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "57b5e185-f4c4-4df4-b299-b41e535539da",
+    companyId: "1c2b1c29-a33b-4771-aec0-ac14a4433696",
     title: "Developer II",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -650,7 +650,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "57b5e185-f4c4-4df4-b299-b41e535539da",
+    companyId: "1c2b1c29-a33b-4771-aec0-ac14a4433696",
     title: "Automation Specialist I",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -677,7 +677,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "57b5e185-f4c4-4df4-b299-b41e535539da",
+    companyId: "1c2b1c29-a33b-4771-aec0-ac14a4433696",
     title: "Automation Specialist III",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -704,7 +704,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "63f05366-4ed0-47e8-a104-f874a622d69e",
+    companyId: "1f06a08e-01b0-4045-b486-bf7ec5afe9b7",
     title: "Software Engineer III",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -731,7 +731,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "63f05366-4ed0-47e8-a104-f874a622d69e",
+    companyId: "1f06a08e-01b0-4045-b486-bf7ec5afe9b7",
     title: "Project Manager",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -758,7 +758,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "63f05366-4ed0-47e8-a104-f874a622d69e",
+    companyId: "1f06a08e-01b0-4045-b486-bf7ec5afe9b7",
     title: "Staff Scientist",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -785,7 +785,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "63f05366-4ed0-47e8-a104-f874a622d69e",
+    companyId: "1f06a08e-01b0-4045-b486-bf7ec5afe9b7",
     title: "Geologist II",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -812,7 +812,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "63f05366-4ed0-47e8-a104-f874a622d69e",
+    companyId: "1f06a08e-01b0-4045-b486-bf7ec5afe9b7",
     title: "Executive Secretary",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -839,7 +839,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "63f05366-4ed0-47e8-a104-f874a622d69e",
+    companyId: "1f06a08e-01b0-4045-b486-bf7ec5afe9b7",
     title: "Accountant II",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -866,7 +866,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "63f05366-4ed0-47e8-a104-f874a622d69e",
+    companyId: "1f06a08e-01b0-4045-b486-bf7ec5afe9b7",
     title: "Statistician III",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -893,7 +893,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "63f05366-4ed0-47e8-a104-f874a622d69e",
+    companyId: "1f06a08e-01b0-4045-b486-bf7ec5afe9b7",
     title: "Office Assistant III",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -920,7 +920,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "63f05366-4ed0-47e8-a104-f874a622d69e",
+    companyId: "1f06a08e-01b0-4045-b486-bf7ec5afe9b7",
     title: "Analog Circuit Design manager",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -947,7 +947,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "63f05366-4ed0-47e8-a104-f874a622d69e",
+    companyId: "1f06a08e-01b0-4045-b486-bf7ec5afe9b7",
     title: "Software Test Engineer III",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -974,7 +974,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "63f05366-4ed0-47e8-a104-f874a622d69e",
+    companyId: "1f06a08e-01b0-4045-b486-bf7ec5afe9b7",
     title: "Actuary",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1001,7 +1001,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "63f05366-4ed0-47e8-a104-f874a622d69e",
+    companyId: "1f06a08e-01b0-4045-b486-bf7ec5afe9b7",
     title: "Operator",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1028,7 +1028,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "63f05366-4ed0-47e8-a104-f874a622d69e",
+    companyId: "1f06a08e-01b0-4045-b486-bf7ec5afe9b7",
     title: "Technical Writer",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1055,7 +1055,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "af24faf9-913f-4323-abae-236dd4550d98",
+    companyId: "1f670aa8-ad86-48af-b71b-aa166df9871f",
     title: "Financial Analyst",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1082,7 +1082,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "af24faf9-913f-4323-abae-236dd4550d98",
+    companyId: "1f670aa8-ad86-48af-b71b-aa166df9871f",
     title: "Design Engineer",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1109,7 +1109,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "af24faf9-913f-4323-abae-236dd4550d98",
+    companyId: "1f670aa8-ad86-48af-b71b-aa166df9871f",
     title: "Project Manager",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1136,7 +1136,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "af24faf9-913f-4323-abae-236dd4550d98",
+    companyId: "1f670aa8-ad86-48af-b71b-aa166df9871f",
     title: "Automation Specialist I",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1163,7 +1163,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Junior Executive",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1190,7 +1190,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Assistant Professor",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1217,7 +1217,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Director of Sales",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1244,7 +1244,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Speech Pathologist",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1271,7 +1271,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Cost Accountant",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1298,7 +1298,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Staff Scientist",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1325,7 +1325,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Assistant Manager",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1352,7 +1352,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Junior Executive",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1379,7 +1379,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "VP Product Management",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1406,7 +1406,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Teacher",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1433,7 +1433,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Accountant III",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1460,7 +1460,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Environmental Tech",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1487,7 +1487,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "General Manager",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1514,7 +1514,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Executive Secretary",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1541,7 +1541,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Media Manager I",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1568,7 +1568,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Assistant Professor",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1595,7 +1595,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Environmental Tech",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1622,7 +1622,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Geological Engineer",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1649,7 +1649,7 @@ const jobs = [
     visible: true,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Human Resources Manager",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1676,7 +1676,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "eaf14fcc-2bb7-4044-9d64-f36c768fad0f",
+    companyId: "2128abce-2c61-4f3a-8a35-c9a5f0691799",
     title: "Environmental Specialist",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1704,7 +1704,7 @@ const jobs = [
   },
 
   {
-    companyId: "2bbdfbcd-6692-4f42-93ac-67178d732170",
+    companyId: "21dda214-969e-41c9-88c3-458cf36750c2",
     title: "Internal Auditor",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1731,7 +1731,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "2bbdfbcd-6692-4f42-93ac-67178d732170",
+    companyId: "21dda214-969e-41c9-88c3-458cf36750c2",
     title: "Tax Accountant",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1758,7 +1758,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "2bbdfbcd-6692-4f42-93ac-67178d732170",
+    companyId: "21dda214-969e-41c9-88c3-458cf36750c2",
     title: "Research Assistant I",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1785,7 +1785,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "2287884e-eb53-481d-9eca-93276642f4e4",
+    companyId: "28ba01a6-da6e-495c-b72e-63880f4cdd9b",
     title: "Marketing Assistant",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1813,7 +1813,7 @@ const jobs = [
   },
 
   {
-    companyId: "c4b427ae-557c-4c54-a434-e197b3120991",
+    companyId: "28ba01a6-da6e-495c-b72e-63880f4cdd9b",
     title: "Programmer I",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1840,7 +1840,7 @@ const jobs = [
     visible: false,
   },
   {
-    companyId: "c4b427ae-557c-4c54-a434-e197b3120991",
+    companyId: "28ba01a6-da6e-495c-b72e-63880f4cdd9b",
     title: "Actuary",
     description: `
         <p>We are seeking a highly skilled Full Stack Developer to join our dynamic and innovative team. The ideal candicreatedAt will have a passion for developing scalable web applications and working across the entire technology stack, including front-end and back-end development. You will have the opportunity to work with the latest technologies and contribute to exciting projects that impact our users directly.</p>
@@ -1870,6 +1870,8 @@ const jobs = [
 
 const main = async () => {
   console.log("Seeding job data...");
+
+  await prisma.job.deleteMany();
 
   for (const job of jobs) {
     await prisma.job.create({
