@@ -407,6 +407,8 @@ const users = [
 const main = async () => {
   console.log("Seeding user data...");
 
+  await prisma.user.deleteMany();
+
   for (const user of users) {
     await prisma.user.create({
       data: {
