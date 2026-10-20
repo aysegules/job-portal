@@ -1,4 +1,5 @@
 import { prisma } from "../lib/prisma.ts";
+import { hashPassword } from "../src/utils/hashPassword.ts";
 
 const companies = [
   {
@@ -606,9 +607,16 @@ const companies = [
 const main = async () => {
   console.log("Seeding company data...");
 
+  await prisma.company.deleteMany();
+
   for (const company of companies) {
     await prisma.company.create({
-      data: company,
+      data: {
+        name: company.name,
+        email: company.email,
+        password: await hashPassword(company.password),
+        img: company.img,
+      },
     });
 
     console.log(`Created company ${company.name}`);
